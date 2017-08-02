@@ -13,6 +13,6 @@
         "symfony/symfony": ">=3.0"
     },
     "autoload": {
-        "psr-4": { "DigipolisGent\\SockApiBundle\\": "" }
+        "psr-4": { "DigipolisGent\\SockAPIBundle\\": "" }
     }
 }
