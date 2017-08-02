@@ -1,0 +1,32 @@
+parameters:
+    sock_api.scheme: "http"
+    sock_api.host: "sock.sock-test-001.openminds.be"
+    sock_api.prefix: "/api/v1"
+    sock_api.user_token: "9Zb6mLpHvG2yajzXVafx"
+    sock_api.client_token: "ZF8LQyTnyEysjRqpia5Gskc8pUjyJ1x1CoWyMUH8qxYr"
+    sock_api.ui_url: "http://sock.sock-test-001.openminds.be/"
+
+services:
+    digip_sock_api.account:
+        class: DigipolisGent\SockAPIBundle\Service\AccountService
+        arguments: ["%sock_api.host%", "%sock_api.user_token%", "%sock_api.client_token%"]
+        calls:
+            - [ setScheme, ["%sock_api.scheme%"]]
+            - [ setPrefix, ["%sock_api.prefix%"]]
+            - [ setLogger, ["@logger"]]
+
+    digip_sock_api.application:
+        class: DigipolisGent\SockAPIBundle\Service\ApplicationService
+        arguments: ["%sock_api.host%", "%sock_api.user_token%", "%sock_api.client_token%"]
+        calls:
+            - [ setScheme, ["%sock_api.scheme%"]]
+            - [ setPrefix, ["%sock_api.prefix%"]]
+            - [ setLogger, ["@logger"]]
+
+    digip_sock_api.database:
+        class: DigipolisGent\SockAPIBundle\Service\DatabaseService
+        arguments: ["%sock_api.host%", "%sock_api.user_token%", "%sock_api.client_token%"]
+        calls:
+            - [ setScheme, ["%sock_api.scheme%"]]
+            - [ setPrefix, ["%sock_api.prefix%"]]
+            - [ setLogger, ["@logger"]]
