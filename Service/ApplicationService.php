@@ -12,7 +12,7 @@ class ApplicationService extends SockAPIService
      */
     protected $path = '/applications';
 
-    protected $modelClass = '\\Digip\\SockAPIBundle\\JsonModel\\Application';
+    protected $modelClass = '\\DigipolisGent\\SockAPIBundle\\JsonModel\\Application';
 
     /**
      * @param int    $accountId
@@ -43,6 +43,6 @@ class ApplicationService extends SockAPIService
     {
         $data = $this->doRequest('GET', $this->constructUrl($id).'/events');
 
-        return $this->assertModels($data, '\\Digip\\SockAPIBundle\\JsonModel\\Event');
+        return $this->assertModels($data, '\\DigipolisGent\\SockAPIBundle\\JsonModel\\Event');
     }
 }
