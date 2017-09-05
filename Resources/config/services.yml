@@ -30,3 +30,26 @@ services:
             - [ setScheme, ["%sock_api.scheme%"]]
             - [ setPrefix, ["%sock_api.prefix%"]]
             - [ setLogger, ["@logger"]]
+
+
+#
+    # sock API services
+    #
+    digip_deploy.sock_api.factory:
+        class: DigipolisGent\SockAPIBundle\Service\SockApiFactory
+        arguments: ["@digip_deploy.settings"]
+
+    digip_deploy.sock_api.account:
+        class: DigipolisGent\SockAPIBundle\Service\AccountService
+        factory: ["@digip_deploy.sock_api.factory", configure]
+        arguments: ["@digip_sock_api.account"]
+
+    digip_deploy.sock_api.application:
+        class: DigipolisGent\SockAPIBundle\Service\ApplicationService
+        factory: ["@digip_deploy.sock_api.factory", configure]
+        arguments: ["@digip_sock_api.application"]
+
+    digip_deploy.sock_api.database:
+        class: DigipolisGent\SockAPIBundle\Service\DatabaseService
+        factory: ["@digip_deploy.sock_api.factory", configure]
+        arguments: ["@digip_sock_api.database"]
