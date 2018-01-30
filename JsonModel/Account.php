@@ -211,7 +211,10 @@ class Account extends ArrayMappable
         $object->setName($data['name']);
         $object->setServerId($data['virtual_server_id']);
         $object->setCreatedAt(new \DateTime($data['created_at']));
-
+        $object->setApplications($data['applications']);
+        $object->setDatabases($data['databases']);
+        $object->setFtpUsers($data['ftp_users']);
+        $object->setSshKeys($data['ssh_keys']);
         return $object;
     }
 

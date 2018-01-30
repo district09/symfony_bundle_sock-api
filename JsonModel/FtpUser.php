@@ -137,6 +137,7 @@ class FtpUser extends ArrayMappable
         $object->setHost($data['host']);
         $object->setUser($data['user']);
         $object->setDirectory($data['directory']);
+        return $object;
     }
 
     public function toArray()
