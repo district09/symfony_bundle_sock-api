@@ -136,7 +136,8 @@ class Server extends ArrayMappable
         $object->setIp($data['ip']);
         $object->setHostname($data['hostname']);
         $object->setAccounts(Account::fromArray($data['accounts']));
-        $object->setCreatedAt(new \DateTime($data['createdAt']));
+        $object->setCreatedAt(new \DateTime($data['created_at']));
+        return $object;
     }
 
     public function toArray()

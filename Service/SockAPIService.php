@@ -251,6 +251,7 @@ abstract class SockAPIService
 
         $json = curl_exec($curl);
 
+
         $info = curl_getinfo($curl);
         curl_close($curl);
 
@@ -287,7 +288,6 @@ abstract class SockAPIService
     public function index(array $data = array())
     {
         $data = $this->doRequest('GET', $this->constructUrl(), $data);
-
         return $this->assertModels($data);
     }
 
@@ -365,9 +365,8 @@ abstract class SockAPIService
             return $data;
         }
 
-        $data = (array) $data;
+        $data = $this->object2array($data);
         $object = $class::fromArray($data);
-
         return $object;
     }
 
@@ -376,5 +375,10 @@ abstract class SockAPIService
         // replace [0] by [], also works if the bracket have been url encoded
         // ie: %5B0%5D will become %5B%5D
         return preg_replace('/((\[)|(\%5B))(\d+)((\])|(\%5D))/', '$1$5', $queryString);
+    }
+
+    protected function object2array($object)
+    {
+      return json_decode(json_encode($object), true);
     }
 }

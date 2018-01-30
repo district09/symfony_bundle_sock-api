@@ -111,6 +111,7 @@ class SshKey extends ArrayMappable
         $object->setDescription($data['description']);
         $object->isFavorite($data['favorite']);
         $object->setKey($data['key']);
+        return $object;
     }
 
     public function toArray()
